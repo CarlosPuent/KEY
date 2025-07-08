@@ -1,55 +1,56 @@
-Sistema de Gestión Académica
-Aplicación fullstack para la gestión de alumnos, docentes, materias y boletas. Incluye autenticación con Auth0, backend en Spring Boot y frontend en React + Vite.
+# 🎓 Sistema de Gestión Académica
 
-Estructura del Proyecto
-bash
+Aplicación fullstack para la gestión de alumnos, docentes, materias y boletas. Incluye autenticación con Auth0, backend en **Spring Boot** y frontend en **React + Vite**.
+
+---
+
+## 📁 Estructura del Proyecto
+
+├── fullstackauth # Backend en Spring Boot
+├── frontend-sistema # Frontend en React + Vite
+└── DumpInstituto.sql # Dump de la base de datos (MySQL)
+
+yaml
 Copiar
 Editar
-├── fullstackauth        # Backend en Spring Boot
-├── frontend-sistema     # Frontend en React + Vite
-└── DumpInstituto.sql    # Dump de la base de datos (MySQL)
- Backend – fullstackauth
-Stack:
 
-Java 17 · Spring Boot 3 · Spring Security (OAuth2 / JWT)
+---
 
-Spring Data JPA · MySQL · Lombok · MapStruct
+## 🔧 Backend – `fullstackauth`
 
-Características:
+**Stack:**
+- Java 17 · Spring Boot 3 · Spring Security (OAuth2 / JWT)
+- Spring Data JPA · MySQL · Lombok · MapStruct
 
-Autenticación con JWT (Auth0)
+**Características:**
+- Autenticación con JWT (Auth0)
+- Rutas protegidas con `@PreAuthorize`
+- Permisos finos: `READ:ALUMNOS`, `WRITE:ALUMNOS`, etc.
+- API RESTful en `/api`
 
-Rutas protegidas con @PreAuthorize
+---
 
-Permisos finos: READ:ALUMNOS, WRITE:ALUMNOS, etc.
+## 💻 Frontend – `frontend-sistema`
 
-API RESTful en /api
+**Stack:**
+- React 18 · Vite · TypeScript · TailwindCSS
+- Axios · React Router · Auth0 React SDK
 
-Frontend – frontend-sistema
-Stack:
+**Características:**
+- Login con Auth0
+- Panel para alumnos, docentes, materias y boletas
+- Envío de JWT en cada petición protegida
 
-React 18 · Vite · TypeScript · TailwindCSS
+---
 
-Axios · React Router · Auth0 React SDK
+## 🛢️ Base de Datos
 
-Características:
+**Motor:** MySQL 8+
 
-Login con Auth0
-
-Panel para alumnos, docentes, materias y boletas
-
-Envío de JWT en cada petición protegida
-
-Base de Datos
-Motor: MySQL 8+
-
-Importación:
-
-bash
-Copiar
-Editar
+**Importación:**
+```bash
 mysql -u root -p < DumpInstituto.sql
-Despliegue
+🚀 Despliegue
 Funciona localmente y en entornos como:
 
 Hetzner Cloud
@@ -64,7 +65,7 @@ Base de datos (URL, usuario, contraseña)
 
 Entornos dev y prod
 
-Nota sobre usuarios
+📝 Nota sobre usuarios
 Este sistema no crea usuarios en Auth0 automáticamente. Para que un alumno use su cuenta:
 
 Debe existir previamente en Auth0 (correo + contraseña).
