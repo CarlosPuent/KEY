@@ -1,0 +1,18 @@
+# Node.js (frontend)
+node_modules/
+dist/
+
+# Java (backend)
+target/
+*.iml
+.idea/
+*.log
+
+# Sistema
+.env
+.DS_Store
+Thumbs.db
+
+# SQL backups
+*.bak
+*.tmp
