@@ -1,75 +1,76 @@
-# Sistema de Gestión Académica
+Sistema de Gestión Académica
+Aplicación fullstack para la gestión de alumnos, docentes, materias y boletas. Incluye autenticación con Auth0, backend en Spring Boot y frontend en React + Vite.
 
-Este proyecto es una aplicación fullstack desarrollada como una prueba técnica para la gestión de alumnos, docentes, materias y boletas. Incluye autenticación con Auth0, un backend robusto en Spring Boot y un frontend moderno en React (Vite).
-
-## Estructura del Proyecto
-
-```
+Estructura del Proyecto
+bash
+Copiar
+Editar
 ├── fullstackauth        # Backend en Spring Boot
-├── frontend-sistema     # Frontend en React + Vite + TypeScript
+├── frontend-sistema     # Frontend en React + Vite
 └── DumpInstituto.sql    # Dump de la base de datos (MySQL)
-```
+ Backend – fullstackauth
+Stack:
 
----
+Java 17 · Spring Boot 3 · Spring Security (OAuth2 / JWT)
 
-## Backend: `fullstackauth`
+Spring Data JPA · MySQL · Lombok · MapStruct
 
-**Tecnologías usadas:**
+Características:
 
-* Java 17
-* Spring Boot 3.x
-* Spring Security (OAuth2 / JWT)
-* Spring Data JPA
-* MySQL
-* Lombok
-* MapStruct
+Autenticación con JWT (Auth0)
 
-**Configuraciones clave:**
+Rutas protegidas con @PreAuthorize
 
-* Autenticación con JWT proporcionado por Auth0
-* Protección de rutas con anotaciones `@PreAuthorize`
-* Control de acceso basado en permisos como `READ:ALUMNOS`, `WRITE:ALUMNOS`, etc.
-* Exposición de endpoints RESTful bajo `/api`
+Permisos finos: READ:ALUMNOS, WRITE:ALUMNOS, etc.
 
-## Frontend: `frontend-sistema`
+API RESTful en /api
 
-**Tecnologías usadas:**
+Frontend – frontend-sistema
+Stack:
 
-* React 18
-* Vite
-* TypeScript
-* TailwindCSS
-* Auth0 React SDK
-* Axios
-* React Router DOM
+React 18 · Vite · TypeScript · TailwindCSS
 
-**Características principales:**
+Axios · React Router · Auth0 React SDK
 
-* Login mediante Auth0
-* Panel de administración de alumnos, docentes, materias y boletas
-* Uso de token JWT en todas las peticiones al backend* Protección de rutas según estado de autenticación
+Características:
 
-## Base de Datos
+Login con Auth0
 
-**Motor:** MySQL 8+
+Panel para alumnos, docentes, materias y boletas
 
-**Archivo Dump:** [`DumpInstituto.sql`](./DumpInstituto.sql)
+Envío de JWT en cada petición protegida
 
-**Comando para importar:**
+Base de Datos
+Motor: MySQL 8+
 
-```bash
+Importación:
+
+bash
+Copiar
+Editar
 mysql -u root -p < DumpInstituto.sql
-```
+Despliegue
+Funciona localmente y en entornos como:
 
----
+Hetzner Cloud
 
-## Despliegue
+Railway / Render
 
-Este proyecto ha sido probado localmente y puede desplegarse en:
+Asegúrate de configurar correctamente las variables de entorno para:
 
-* Hetzner Cloud (servidores VPS)
-* Render / Railway (para fines de prueba)
+Auth0 (dominio, client ID, audiencia)
 
-Configura variables de entorno correctamente tanto para el backend como para Auth0 y base de datos.
+Base de datos (URL, usuario, contraseña)
 
----
+Entornos dev y prod
+
+Nota sobre usuarios
+Este sistema no crea usuarios en Auth0 automáticamente. Para que un alumno use su cuenta:
+
+Debe existir previamente en Auth0 (correo + contraseña).
+
+Debe tener el rol correspondiente (ej. ROL_ALUMNO) con permisos adecuados.
+
+Su auth0Id debe estar vinculado al alumno en la base de datos.
+
+Una mejora futura sería automatizar este proceso desde el backend usando la Management API de Auth0.
